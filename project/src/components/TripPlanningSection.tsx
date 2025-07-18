@@ -545,32 +545,125 @@ const TripPlanner: React.FC = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
-        <input
-          type="text"
-          placeholder="Enter source (e.g., Dadar)"
-          value={source}
-          onChange={(e) => setSource(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Enter destination (e.g., Bandra)"
-          value={destination}
-          onChange={(e) => setDestination(e.target.value)}
-          required
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Loading..." : "Get Safe Route"}
-        </button>
-      </form>
+      <div className="w-full min-h-screen p-6 bg-white">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Safe Route Planner</h1>
+        <p className="text-gray-600">Find the safest route between your locations</p>
+      </div>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {/* Trip Planning Form */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 mb-6 shadow-sm border border-blue-100">
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Source Input */}
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">
+               
+                From
+              </label>
+              <input
+                type="text"
+                placeholder="Enter source (e.g., Dadar)"
+                value={source}
+                onChange={(e) => setSource(e.target.value)}
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
+              />
+            </div>
 
-      <button onClick={openInGoogleMaps} disabled={!sourceCoords || !destCoords}>
-        Open in Google Maps
-      </button>
+            {/* Destination Input */}
+            <div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">
+                {/* <Navigation className="inline w-4 h-4 mr-1" /> */}
+                To
+              </label>
+              <input
+                type="text"
+                placeholder="Enter destination (e.g., Bandra)"
+                value={destination}
+                onChange={(e) => setDestination(e.target.value)}
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
+              />
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <div className="flex justify-center">
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={loading}
+              className="px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors duration-200 shadow-md hover:shadow-lg transform hover:scale-105 transition-transform"
+            >
+              {loading ? (
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <span>Finding Safe Route...</span>
+                </div>
+              ) : (
+                <div className="flex items-center space-x-2">
+                  {/* <Navigation className="w-4 h-4" /> */}
+                  <span>Get Safe Route</span>
+                </div>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Error Message */}
+      {error && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className="flex items-center space-x-2 text-red-700">
+            {/* <AlertCircle className="w-5 h-5" /> */}
+            <span className="font-medium">Error</span>
+          </div>
+          <p className="text-red-600 mt-1">{error}</p>
+        </div>
+      )}
+
+      {/* Action Buttons */}
+      {(sourceCoords || destCoords) && (
+        <div className="mb-6 flex justify-center">
+          <button
+            onClick={openInGoogleMaps}
+            disabled={!sourceCoords || !destCoords}
+            className="flex items-center space-x-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 shadow-md hover:shadow-lg"
+          >
+            {/* <ExternalLink className="w-4 h-4" /> */}
+            <span>Open in Google Maps</span>
+          </button>
+        </div>
+      )}
+
+      {/* Route Information */}
+      {sourceCoords && destCoords && (
+        <div className="mb-6 p-4 bg-gray-50 rounded-lg border">
+          <h3 className="font-semibold text-gray-900 mb-2">Route Information</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div>
+              <span className="text-gray-600">Source:</span>
+              <p className="font-mono text-gray-800">
+                {sourceCoords.lat.toFixed(6)}, {sourceCoords.lng.toFixed(6)}
+              </p>
+            </div>
+            <div>
+              <span className="text-gray-600">Destination:</span>
+              <p className="font-mono text-gray-800">
+                {destCoords.lat.toFixed(6)}, {destCoords.lng.toFixed(6)}
+              </p>
+            </div>
+          </div>
+          {routeCoords.length > 0 && (
+            <div className="mt-2">
+              <span className="text-gray-600">Route Points:</span>
+              <span className="ml-2 text-blue-600 font-semibold">{routeCoords.length} waypoints</span>
+            </div>
+          )}
+        </div>
+      )}
 
       <SafeRouteMap
         sourceCoords={sourceCoords}

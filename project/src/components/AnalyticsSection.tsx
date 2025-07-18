@@ -30,9 +30,9 @@ const AnalyticsSection = ({ filters, selectedArea }) => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="grid grid-cols-2 gap-6 mb-8">
       {/* Quick Stats */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
+      {/* <div className="bg-white rounded-lg shadow-lg p-6">
         <h3 className="text-lg font-semibold mb-4">Quick Stats</h3>
         <div className="space-y-3">
           <div className="flex justify-between items-center">
@@ -48,7 +48,7 @@ const AnalyticsSection = ({ filters, selectedArea }) => {
             <span className="font-bold text-2xl text-green-600">3.2m</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Incident Types */}
       <div className="bg-white rounded-lg shadow-lg p-6">

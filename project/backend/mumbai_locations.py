@@ -55,6 +55,7 @@ mumbai_localities = {
     "cuffe parade": {"lat": 18.9105, "lng": 72.8142},
     "fort": {"lat": 18.9322, "lng": 72.8335},
     "kalbadevi": {"lat": 18.9514, "lng": 72.8277},
+    "kalina":{"lat":19.0763,"lng":72.8654}, 
     "walkeshwar": {"lat": 18.9548, "lng": 72.8075},
     "malabar hill": {"lat": 18.9540, "lng": 72.8026},
     "bhuleshwar": {"lat": 18.9500, "lng": 72.8297},

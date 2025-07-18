@@ -6,7 +6,7 @@ import FilterPanel from "../FilterPanel";
 import StatisticsCards from "../StatisticsCards";
 import Chatbot from "../chatbot";
 import Footer from "../Footer";
-import TripPlanningSection from "../trip_og";
+import TripPlanner from "../TripPlanningSection";
 
 // Type definitions
 interface User {
@@ -158,7 +158,7 @@ function HomePage() {
 
         {/* Trip Planning Section */}
         <div className="mb-8">
-          <TripPlanningSection />
+          <TripPlanner />
         </div>
 
         {/* Main Content Grid */}
