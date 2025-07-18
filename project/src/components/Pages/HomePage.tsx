@@ -6,7 +6,7 @@ import FilterPanel from "../FilterPanel";
 import StatisticsCards from "../StatisticsCards";
 import Chatbot from "../chatbot";
 import Footer from "../Footer";
-import TripPlanningSection from "../TripPlanningSection";
+import TripPlanningSection from "../trip_og";
 
 // Type definitions
 interface User {

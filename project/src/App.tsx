@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import AuthForm from './components/AuthForm/AuthForm';
 import HomePage from './components/Pages/HomePage'; 
 import LandingPage from './components/Pages/Landing';
+import SafeRoutePage from './components/Pages/SafeRoute';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" element={<LandingPage />} /> {/* Add other routes here */}
         <Route path="/login" element={<AuthForm />} /> {/* Login route */}
          <Route path="/home" element={<HomePage />} /> {/* Login route */}
+           <Route path="/route" element={<SafeRoutePage />} /> {/* Login route */}
       </Routes>
       {/* <Footer /> */}
     </Router>
