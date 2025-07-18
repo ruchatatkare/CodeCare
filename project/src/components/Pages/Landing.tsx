@@ -2,8 +2,6 @@ import React from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import Chatbot from "../chatbot";
-
-
 import { Link } from "react-router-dom";
 
 function LandingPage() {
@@ -20,7 +18,7 @@ function LandingPage() {
           <p className="text-lg text-gray-600 mb-6">
             Empowering women with real-time safety insights, emergency tools, and a voice to report harassment or unsafe situations — all in one platform.
           </p>
-          <Link to="/dashboard">
+          <Link to="/login">  {/* Changed from /dashboard to /login */}
             <button className="bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700 transition">
               Go to Dashboard
             </button>
@@ -29,9 +27,10 @@ function LandingPage() {
 
         {/* Image Stack: badge.png above the main image */}
         <div className="flex flex-col items-center">
-          <img src="project/src/assests/badge.png"
-            alt="Badge Illustration"
-            className="w-24 mb-4"
+          <img
+            src="https://images.unsplash.com/photo-1607748851687-ba9a10438621?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+            alt="Confident Indian Woman"
+            className="w-60 rounded-xl shadow-lg"
           />
         </div>
       </div>
@@ -65,7 +64,7 @@ function LandingPage() {
             },
             {
               title: "Safety Ratings",
-              desc: "View or submit formal testimonials and safety ratings of places you’ve visited.",
+              desc: "View or submit formal testimonials and safety ratings of places you've visited.",
             },
           ].map((item, idx) => (
             <div
@@ -85,7 +84,7 @@ function LandingPage() {
       <div className="py-12 bg-purple-600 text-white text-center">
         <h2 className="text-3xl font-semibold mb-4">Join the Movement for Safer Cities</h2>
         <p className="mb-6">Be part of the change. Report, react, and raise your voice.</p>
-        <Link to="/register">
+        <Link to="/login">  {/* Changed from /register to /login */}
           <button className="bg-white text-purple-600 px-6 py-3 rounded-xl font-medium hover:bg-gray-100">
             Get Started
           </button>
@@ -93,9 +92,8 @@ function LandingPage() {
       </div>
         
       <div className="fixed bottom-4 right-4 z-50">
-  <Chatbot />
-</div>
-
+        <Chatbot />
+      </div>
 
       <Footer />
     </div>

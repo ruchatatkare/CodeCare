@@ -30,7 +30,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <Shield className="h-8 w-8 text-purple-600" />
-            <span className="text-xl font-bold text-gray-800">Code Care</span>
+            <span className="text-xl font-bold text-gray-800">SafetyNet</span>
           </div>
 
           {/* If user is logged in, show full navbar; else show only login button */}
